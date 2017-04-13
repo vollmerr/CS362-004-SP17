@@ -136,5 +136,11 @@ int playVillage(struct gameState *state, int handPos);
 int playFeast(struct gameState *state, int choice1);
 int playCouncil_Room(struct gameState *state, int handPos);
 
+// Cards
+int effect_adventurer(struct gameState *state);
+int effect_council_room(int handPos, struct gameState *state);
+int effect_smithy(int handPos, struct gameState *state);
+int effect_minion(int handPos, struct gameState *state, int choice1, int choice2);
+int effect_cutpurse(int handPos, struct gameState *state);
 
 #endif
