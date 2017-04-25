@@ -21,7 +21,7 @@ int test_discardCard(struct gameState *actual, struct gameState *expected, int r
   test_result(!memcmp(expected->playedCards, actual->playedCards, MAX_DECK), "updated played cards if trash flag set");
   test_result(expected->handCount[player] == actual->handCount[player], "updated the players hand count");
   test_result(!memcmp(expected->hand[player], actual->hand[player], MAX_HAND), "updated the players hand");
-  test_result(!memcmp(expected, actual, sizeof(struct gameState)), "not effected other values of the game state");
+  test_result(!memcmp(expected, actual, sizeof(struct gameState)), "effected only values of the game state it needed to");
   return r;
 }
 

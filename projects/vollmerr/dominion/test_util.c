@@ -23,6 +23,7 @@ int test_result(int result, char *msg) {
     printf("\nFAILED test...\n It should have %s\n\n", msg);
     return 1;
   }
+  printf("#");
   return 0;
 }
 

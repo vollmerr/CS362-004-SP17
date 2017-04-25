@@ -15,7 +15,7 @@
 void test_updateCoins(struct gameState *actual, struct gameState *expected, int ret) {
   test_result(!ret, "the correct return value");
   test_result(actual->coins == expected->coins, "reset current players coins, added based off cards, then added bonus");
-  test_result(!memcmp(expected, actual, sizeof(struct gameState)), "not effected other values of the game state");
+  test_result(!memcmp(expected, actual, sizeof(struct gameState)), "effected only values of the game state it needed to");
 }
 
 int main() {
