@@ -1096,6 +1096,14 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
   return -1;
 }
 
+/**
+ * Discards a card from current players hand
+ * @param  handPos       - position of card to discard in players hand
+ * @param  currentPlayer - index of current player
+ * @param  state         - state of game
+ * @param  trashFlag     - determines if card is played or trashed
+ * @return               - success value
+ */
 int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
 {
 
@@ -1171,6 +1179,15 @@ int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
   return 0;
 }
 
+/**
+ * Updates coins based off current players bonus and
+ *  number of each treasure card in hand, ignores currently
+ *  existing coins
+ * @param  player - index of current player
+ * @param  state  - state of game
+ * @param  bonus  - bonus coins amount
+ * @return        - success value
+ */
 int updateCoins(int player, struct gameState *state, int bonus)
 {
   int i;
