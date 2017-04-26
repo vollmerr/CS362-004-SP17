@@ -42,10 +42,10 @@ void test_header(char *name) {
  * @param msg - header to display
  */
 void print_(int *arr, int n, char *msg) {
-  printf("---- %s ---\n", msg);
+  printf("\n\n---- %s ---\n", msg);
   int i;
   for (i=0; i<n; i++) {
     printf("%d : %d\n", i, arr[i]);
   }
-  printf("++++++++++++++++++\n");
+  printf("\n++++++++++++++++++\n\n");
 }

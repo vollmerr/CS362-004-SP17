@@ -312,6 +312,12 @@ int numHandCards(struct gameState *state) {
   return state->handCount[ whoseTurn(state) ];
 }
 
+/**
+ * returns a card from players hand based off position
+ * @param  handPos - position of card to select
+ * @param  state   - state of game
+ * @return         - card at given position
+ */
 int handCard(int handPos, struct gameState *state) {
   int currentPlayer = whoseTurn(state);
   return state->hand[currentPlayer][handPos];
@@ -454,71 +460,60 @@ int scoreFor (int player, struct gameState *state) {
   return score;
 }
 
+/**
+ * Determines who has won the game
+ *  in tie game whoever went first loses
+ * @param  players - stores if players have won or lost
+ * @param  state   - state of game
+ * @return         - success value
+ */
 int getWinners(int players[MAX_PLAYERS], struct gameState *state) {
   int i;
   int j;
   int highScore;
   int currentPlayer;
-
   //get score for each player
-  for (i = 0; i < MAX_PLAYERS; i++)
-  {
+  for (i = 0; i < MAX_PLAYERS; i++) {
     //set unused player scores to -9999
-    if (i >= state->numPlayers)
-    {
+    if (i >= state->numPlayers) {
       players[i] = -9999;
     }
-    else
-    {
-      players[i] = scoreFor (i, state);
+    else {
+      players[i] = scoreFor(i, state);
     }
   }
-
   //find highest score
   j = 0;
-  for (i = 0; i < MAX_PLAYERS; i++)
-  {
-    if (players[i] > players[j])
-    {
+  for (i = 0; i < MAX_PLAYERS; i++) {
+    if (players[i] > players[j]) {
       j = i;
     }
   }
   highScore = players[j];
-
   //add 1 to players who had less turns
   currentPlayer = whoseTurn(state);
-  for (i = 0; i < MAX_PLAYERS; i++)
-  {
-    if ( players[i] == highScore && i > currentPlayer )
-    {
+  for (i = 0; i < MAX_PLAYERS; i++) {
+    if ( players[i] == highScore && i > currentPlayer ) {
       players[i]++;
     }
   }
-
   //find new highest score
   j = 0;
-  for (i = 0; i < MAX_PLAYERS; i++)
-  {
-    if ( players[i] > players[j] )
-    {
+  for (i = 0; i < MAX_PLAYERS; i++) {
+    if ( players[i] > players[j] ) {
       j = i;
     }
   }
   highScore = players[j];
-
   //set winners in array to 1 and rest to 0
-  for (i = 0; i < MAX_PLAYERS; i++)
-  {
-    if ( players[i] == highScore )
-    {
+  for (i = 0; i < MAX_PLAYERS; i++) {
+    if ( players[i] == highScore ) {
       players[i] = 1;
     }
-    else
-    {
+    else {
       players[i] = 0;
     }
   }
-
   return 0;
 }
 
@@ -1104,33 +1099,25 @@ int cardEffect(int card, int choice1, int choice2, int choice3, struct gameState
  * @param  trashFlag     - determines if card is played or trashed
  * @return               - success value
  */
-int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag)
-{
-
+int discardCard(int handPos, int currentPlayer, struct gameState *state, int trashFlag) {
   //if card is not trashed, added to Played pile
-  if (trashFlag < 1)
-  {
+  if (trashFlag < 1) {
     //add card to played pile
     state->playedCards[state->playedCardCount] = state->hand[currentPlayer][handPos];
     state->playedCardCount++;
   }
-
   //set played card to -1
   state->hand[currentPlayer][handPos] = -1;
-
   //remove card from player's hand
-  if ( handPos == (state->handCount[currentPlayer] - 1) )   //last card in hand array is played
-  {
+  if ( handPos == (state->handCount[currentPlayer] - 1) ) {   //last card in hand array is played
     //reduce number of cards in hand
     state->handCount[currentPlayer]--;
   }
-  else if ( state->handCount[currentPlayer] == 1 ) //only one card in hand
-  {
+  else if ( state->handCount[currentPlayer] == 1 ) {          //only one card in hand
     //reduce number of cards in hand
     state->handCount[currentPlayer]--;
   }
-  else
-  {
+  else {
     //replace discarded card with last card in hand
     state->hand[currentPlayer][handPos] = state->hand[currentPlayer][ (state->handCount[currentPlayer] - 1)];
     //set last card to -1
@@ -1138,7 +1125,6 @@ int discardCard(int handPos, int currentPlayer, struct gameState *state, int tra
     //reduce number of cards in hand
     state->handCount[currentPlayer]--;
   }
-
   return 0;
 }
 
@@ -1188,33 +1174,24 @@ int gainCard(int supplyPos, struct gameState *state, int toFlag, int player)
  * @param  bonus  - bonus coins amount
  * @return        - success value
  */
-int updateCoins(int player, struct gameState *state, int bonus)
-{
+int updateCoins(int player, struct gameState *state, int bonus) {
   int i;
-
   //reset coin count
   state->coins = 0;
-
   //add coins for each Treasure card in player's hand
-  for (i = 0; i < state->handCount[player]; i++)
-  {
-    if (state->hand[player][i] == copper)
-    {
+  for (i = 0; i < state->handCount[player]; i++) {
+    if (state->hand[player][i] == copper) {
       state->coins += 1;
     }
-    else if (state->hand[player][i] == silver)
-    {
+    else if (state->hand[player][i] == silver) {
       state->coins += 2;
     }
-    else if (state->hand[player][i] == gold)
-    {
+    else if (state->hand[player][i] == gold) {
       state->coins += 3;
     }
   }
-
   //add bonus
   state->coins += bonus;
-
   return 0;
 }
 
