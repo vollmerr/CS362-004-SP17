@@ -142,10 +142,4 @@ int effect_smithy(int handPos, struct gameState *state);
 int effect_minion(int handPos, struct gameState *state, int choice1, int choice2);
 int effect_cutpurse(int handPos, struct gameState *state);
 
-/////////// TEST FUNCTIONS ///////////////////
-
-int test_result(int result, char *msg);
-void test_header(char *name);
-void print_(int *arr, int n, char *msg);
-
 #endif

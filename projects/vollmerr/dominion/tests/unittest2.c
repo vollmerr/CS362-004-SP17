@@ -4,13 +4,7 @@
 //
 // unit test for dominion function discardCard
 ////////////////////////////////////////////////////////////////
-#include "dominion.h"
-#include "dominion_helpers.h"
-#include "rngs.h"
-#include <string.h>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include "tests.h"
 
 int test_discardCard(struct gameState *actual, struct gameState *expected, int ret, int player) {
   int r = 0;

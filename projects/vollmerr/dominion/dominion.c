@@ -228,6 +228,15 @@ int shuffle(int player, struct gameState *state) {
   return 0;
 }
 
+/**
+ * Plays a card from players hand
+ * @param  handPos - position in players hand
+ * @param  choice1 - if player chose 1st choice
+ * @param  choice2 - if player chose 2nd choice
+ * @param  choice3 - if player chose 3rd choice
+ * @param  state   - state of game
+ * @return         - success ? 0 : -1
+ */
 int playCard(int handPos, int choice1, int choice2, int choice3, struct gameState *state)
 {
   int card;

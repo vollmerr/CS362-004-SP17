@@ -4,13 +4,7 @@
 //
 // utility functions for running tests
 ////////////////////////////////////////////////////////////////
-#include "dominion.h"
-#include "dominion_helpers.h"
-#include "rngs.h"
-#include <string.h>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include "tests.h"
 
 /**
  * Assertion function, prints message on failure

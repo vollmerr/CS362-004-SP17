@@ -4,13 +4,7 @@
 //
 // unit test for dominion function handCard
 ////////////////////////////////////////////////////////////////
-#include "dominion.h"
-#include "dominion_helpers.h"
-#include "rngs.h"
-#include <string.h>
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include "tests.h"
 
 int test_handCard(struct gameState *actual, struct gameState *expected, int player, int handPos) {
   int r, card;
