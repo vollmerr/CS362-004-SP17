@@ -8,8 +8,8 @@
  * Effect for adventurer card.
  *  Reveal cards from deck until 2 treasure cards
  *  then put treasure into hand and discard rest.
- * @param  state [description]
- * @return       [description]
+ * @param  state - state of game
+ * @return       - success value
  */
 int effect_adventurer(struct gameState *state) {
   int currentPlayer = whoseTurn(state);
@@ -40,7 +40,7 @@ int effect_adventurer(struct gameState *state) {
 
 /**
  * Effect for council room card.
- *  +3 cards
+ *  +4 cards
  *  +1 buy
  *  +1 card for other players
  * @param  handPos - position of card played

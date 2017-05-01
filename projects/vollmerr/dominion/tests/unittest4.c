@@ -10,7 +10,6 @@ int test_handCard(struct gameState *actual, struct gameState *expected, int play
   int r, card;
   r = handCard(handPos, actual);
   card = expected->hand[player][handPos];
-
   test_result(r == card, "the correct card returned");
   test_result(!memcmp(expected, actual, sizeof(struct gameState)), "effected only values of the game state it needed to");
   return r;

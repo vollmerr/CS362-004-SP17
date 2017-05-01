@@ -1,7 +1,13 @@
 CFLAGS = -Wall -fpic -coverage -lm -fprofile-arcs -ftest-coverage -g
 O_FILES = dominion.o rngs.o effects.o
+
 TEST_PATH = ./tests/
 TEST_FILES = $(TEST_PATH)tests.h $(TEST_PATH)test_util.o
+TEST_TYPE = -b
+
+T_CARD = cardtest1 cardtest2 cardtest3 cardtest4
+T_UNIT = unittest1 unittest2 unittest3 unittest4
+T_ALL = $(T_CARD) $(T_UNIT)
 
 #######################################################################
 #####################			BASE .o FILES				#########################
@@ -26,50 +32,92 @@ player: player.c interface.o $(O_FILES)
 #######################################################################
 #####################					TESTS						#########################
 #######################################################################
-##	Utility
+#############	Utility
 test_util.o: $(TEST_PATH)test_util.c $(TEST_PATH)tests.h
 	gcc $(CFLAGS) -c -o $(TEST_PATH)$@ $<
-# clean
-_tests = rm -f $(TEST_PATH)*.o $(TEST_PATH)*.gcov $(TEST_PATH)*.gcda $(TEST_PATH)*.gcno $(TEST_PATH)*.so && $(_unittests)
+# run all tests
 
-##	Game functions
+gcov_all: $(T_ALL)
+	echo "" > unittestresult.out
+	@for n in $(T_UNIT); do $(TEST_PATH)$$n &>> unittestresult.out; done
+	gcov $(TEST_TYPE) dominion.c >> unittestresult.out
+	cat dominion.c.gcov >> unittestresult.out
+	@for n in $(T_CARD); do $(TEST_PATH)$$n &>> unittestresult.out; done
+	gcov $(TEST_TYPE) effects.c >> unittestresult.out
+	cat effects.c.gcov >> unittestresult.out
+
+# clean
+_tests = cd $(TEST_PATH) && rm -f *.o *.gcov *.gcda *.gcno *.so && $(_unittests) && $(_cardtests) && cd ../
+
+############# Game functions
 # updateCoins
 unittest1: $(TEST_PATH)unittest1.c $(TEST_FILES) $(O_FILES)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
 gcov_unittest1: unittest1
 	$(TEST_PATH)$< &> $@result.out
-	gcov dominion.c >> $@result.out
+	gcov $(TEST_TYPE) dominion.c >> $@result.out
 	cat dominion.c.gcov >> $@result.out
 # discardCard
 unittest2: $(TEST_PATH)unittest2.c $(TEST_FILES) $(O_FILES)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
 gcov_unittest2: unittest2
 	$(TEST_PATH)$< &> $@result.out
-	gcov dominion.c >> $@result.out
+	gcov $(TEST_TYPE) dominion.c >> $@result.out
 	cat dominion.c.gcov >> $@result.out
 # playCard
 unittest3: $(TEST_PATH)unittest3.c $(TEST_FILES) $(O_FILES)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
 gcov_unittest3: unittest3
 	$(TEST_PATH)$< &> $@result.out
-	gcov -c dominion.c >> $@result.out
+	gcov $(TEST_TYPE) dominion.c >> $@result.out
 	cat dominion.c.gcov >> $@result.out
 # handCard
 unittest4: $(TEST_PATH)unittest4.c $(TEST_FILES) $(O_FILES)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
 gcov_unittest4: unittest4
 	$(TEST_PATH)$< &> $@result.out
-	gcov dominion.c >> $@result.out
+	gcov $(TEST_TYPE) dominion.c >> $@result.out
 	cat dominion.c.gcov >> $@result.out
 # build
-unittests: unittest1 unittest2 unittest3 unittest4
+unittests: $(T_UNIT)
 # clean
-_unittests = rm -f $(TEST_PATH)unittest1 $(TEST_PATH)unittest2 $(TEST_PATH)unittest3 $(TEST_PATH)unittest4
+_unittests = rm -f $(T_UNIT)
 
-##	Cards
-# TODO!
+############# Cards
+# adventurer
+cardtest1: $(TEST_PATH)cardtest1.c $(TEST_FILES) $(O_FILES)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_cardtest1: cardtest1 effects.c
+	$(TEST_PATH)$< &> $@result.out
+	gcov $(TEST_TYPE) effects.c >> $@result.out
+	cat effects.c.gcov >> $@result.out
+# council room
+cardtest2: $(TEST_PATH)cardtest2.c $(TEST_FILES) $(O_FILES)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_cardtest2: cardtest2 effects.c
+	$(TEST_PATH)$< &> $@result.out
+	gcov $(TEST_TYPE) effects.c >> $@result.out
+	cat effects.c.gcov >> $@result.out
+# smithy
+cardtest3: $(TEST_PATH)cardtest3.c $(TEST_FILES) $(O_FILES)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_cardtest3: cardtest3 effects.c
+	$(TEST_PATH)$< &> $@result.out
+	gcov $(TEST_TYPE) effects.c >> $@result.out
+	cat effects.c.gcov >> $@result.out
+# minion
+cardtest4: $(TEST_PATH)cardtest4.c $(TEST_FILES) $(O_FILES)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_cardtest4: cardtest4 effects.c
+	$(TEST_PATH)$< &> $@result.out
+	gcov $(TEST_TYPE) effects.c >> $@result.out
+	cat effects.c.gcov >> $@result.out
+# build
+cardtests: $(T_CARD)
+# clean
+_cardtests = rm -f $(T_CARD)
 
-##	Old...
+############# Old...
 testDrawCard: testDrawCard.c $(O_FILES)
 	gcc $(CFLAGS) -o $@ $^
 badTestDrawCard: badTestDrawCard.c $(O_FILES)
@@ -86,7 +134,7 @@ runtests: testDrawCard
 #######################################################################
 #####################					UTILITY					#########################
 #######################################################################
-all: playdom player testDrawCard testBuyCard badTestDrawCard unittests
+all: playdom player testDrawCard testBuyCard badTestDrawCard unittests cardtests
 
 clean:
 	$(_tests)
