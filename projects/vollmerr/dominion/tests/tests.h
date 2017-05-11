@@ -8,6 +8,7 @@
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
+#include<time.h>
 
 int test_result(int result, char *msg);
 void test_header(char *name);

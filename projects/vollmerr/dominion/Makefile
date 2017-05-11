@@ -78,6 +78,7 @@ unittests: $(T_UNIT)
 _unittests = rm -f $(T_UNIT)
 
 ############# Cards
+#### UNIT TESTS
 # adventurer
 cardtest1: $(TEST_PATH)cardtest1.c $(TEST_FILES) $(OBJ)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
@@ -102,6 +103,13 @@ gcov_cardtest4: effects.c cardtest4
 cardtests: $(T_CARD)
 # clean
 _cardtests = rm -f $(T_CARD)
+
+#### RND TESTS
+# adventurer
+randomtestcard1: $(TEST_PATH)randomtestcard1.c $(TEST_FILES) $(OBJ)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_randomtestcard1: effects.c randomtestcard1
+	$(runtest)
 
 ############# Old...
 testDrawCard: testDrawCard.c $(OBJ)
