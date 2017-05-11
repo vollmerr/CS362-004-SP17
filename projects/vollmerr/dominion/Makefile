@@ -7,6 +7,7 @@ TEST_FILES = $(TEST_PATH)tests.h $(TEST_PATH)test_util.o
 TEST_TYPE = -b
 
 T_CARD = cardtest1 cardtest2 cardtest3 cardtest4
+T_CARD_R = randomtestcard1 randomtestcard2
 T_UNIT = unittest1 unittest2 unittest3 unittest4
 T_ALL = $(T_CARD) $(T_UNIT)
 
@@ -49,7 +50,7 @@ gcov_all: $(T_ALL)
 	cat effects.c.gcov >> unittestresult.out
 
 # clean
-_tests = cd $(TEST_PATH) && rm -f *.o *.gcov *.gcda *.gcno *.so && $(_unittests) && $(_cardtests) && cd ../
+_tests = cd $(TEST_PATH) && rm -f *.o *.gcov *.gcda *.gcno *.so && $(_unittests) && $(_cardtests) && $(_randomcardtests) && cd ../
 
 ############# Game functions
 # updateCoins
@@ -110,6 +111,15 @@ randomtestcard1: $(TEST_PATH)randomtestcard1.c $(TEST_FILES) $(OBJ)
 	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
 gcov_randomtestcard1: effects.c randomtestcard1
 	$(runtest)
+# council room
+randomtestcard2: $(TEST_PATH)randomtestcard2.c $(TEST_FILES) $(OBJ)
+	gcc $(CFLAGS) -o $(TEST_PATH)$@ $^
+gcov_randomtestcard2: effects.c randomtestcard2
+	$(runtest)
+# build
+randomcardtests: $(T_CARD_R)
+# clean
+_randomcardtests = rm -f $(T_CARD_R)
 
 ############# Old...
 testDrawCard: testDrawCard.c $(OBJ)
@@ -128,7 +138,7 @@ runtests: testDrawCard
 #######################################################################
 #####################					UTILITY					#########################
 #######################################################################
-all: playdom player testDrawCard testBuyCard badTestDrawCard unittests cardtests
+all: playdom player testDrawCard testBuyCard badTestDrawCard unittests cardtests randomcardtests
 
 .PHONY: clean
 clean:

@@ -19,26 +19,6 @@
 #include "tests.h"
 
 /**
- * Generates random cards and sets count
- * @param  numPlayers - number of players
- * @param  player     - current player
- * @param  count      - count of card pile
- * @param  cards      - cards to fill up
- * @return            - success value
- */
-int cards_init(struct gameState *state, int *count, int (*cards)[MAX_DECK]) {
-  int i, rnd;
-  rnd = rand() % (MAX_DECK + 1);
-  // set random cards for current player
-  for (i=0; i<rnd; i++) {
-    cards[state->whoseTurn][i] = rand() % (treasure_map + 1);
-  }
-  // set count for current players cards
-  count[state->whoseTurn] = rnd;
-  return 0;
-}
-
-/**
  * Initalizes game state with random values withiin bounds
  * @param  actual   - actual outcome of state
  * @param  expected - expected outcome of state
@@ -59,15 +39,16 @@ int test_init(struct gameState *actual, struct gameState *expected) {
   cards_init(actual, actual->handCount, actual->hand);
   cards_init(actual, actual->discardCount, actual->discard);
   memcpy(expected, actual, sizeof(struct gameState));
-  // print_(actual->deck[whoseTurn], actual->deckCount[whoseTurn], "deckCount");
-  // print_(actual->hand[whoseTurn], actual->handCount[whoseTurn], "handCount");
-  // print_(actual->discard[whoseTurn], actual->discardCount[whoseTurn], "discardCount");
-  //TODO: edge cases moar
+
   return 0;
 }
-//NOTE: shuffle broken for < 1 : retrns -1 instead of shuffling
-//NOTE: need to fail deckcount a couple times for certain
 
+/**
+ * Runs a single test run for adventurer card
+ * @param  actual   - actual state to test
+ * @param  expected - expected outcome of state
+ * @return          - success value
+ */
 int test_run(struct gameState *actual, struct gameState *expected) {
   int ret;
   int whoseTurn = actual->whoseTurn;
