@@ -7,6 +7,26 @@
 #include "tests.h"
 
 /**
+ * Generates random cards and sets count
+ * @param  numPlayers - number of players
+ * @param  player     - current player
+ * @param  count      - count of card pile
+ * @param  cards      - cards to fill up
+ * @return            - success value
+ */
+int cards_init(struct gameState *state, int *count, int (*cards)[MAX_DECK]) {
+  int i, rnd;
+  rnd = rand() % (MAX_DECK + 1);
+  // set random cards for current player
+  for (i=0; i<rnd; i++) {
+    cards[state->whoseTurn][i] = rand() % (treasure_map + 1);
+  }
+  // set count for current players cards
+  count[state->whoseTurn] = rnd;
+  return 0;
+}
+
+/**
  * Assertion function, prints message on failure
  * @param  result - result to assert
  * @param  msg    - description of what it failed to do
