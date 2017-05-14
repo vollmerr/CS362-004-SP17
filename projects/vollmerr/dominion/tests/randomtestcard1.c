@@ -2,8 +2,8 @@
 // randomtestcard1.c
 // By: Ryan Vollmer
 //
-// random tests for Adventurer card
-// Adventurer depends upon the following state:
+// random tests for smithy card
+// Smithy depends upon the following state:
 //      - numPlayers => [1..MAX_PLAYERS] (must be > whoseTurn)
 //      - whoseTurn => [0..MAX_PLAYERS-1]
 //      - deckCards[MAX_DECK] => (cards in range [curse..treasure_map])
@@ -15,6 +15,8 @@
 //      - discardCards[MAX_HAND] => (cards in range [curse..treasure_map])
 //      - discardCount[whoseTurn] => [0..MAX_DECK]
 //      - discard[whoseTurn][discardCount] => (use discardCards)
+//      - playedCards[playedCardCount] => (cards in range [curse..treasure_map])
+//      - playedCardCount => (int)
 ////////////////////////////////////////////////////////////////
 #include "tests.h"
 
@@ -25,9 +27,11 @@
  * @return          - success value
  */
 int test_init(struct gameState *actual, struct gameState *expected) {
+  int i;
   int seed = rand();
   int numPlayers = (rand() % MAX_PLAYERS) + 1;
   int whoseTurn = rand() % numPlayers;
+  int playedCardCount = rand() % MAX_HAND;
   int k[10] = {adventurer, council_room, feast, gardens, mine,
                remodel, smithy, village, baron, great_hall};
 
@@ -35,52 +39,41 @@ int test_init(struct gameState *actual, struct gameState *expected) {
   initializeGame(numPlayers, k, seed, actual);
   actual->whoseTurn = whoseTurn;
   actual->numPlayers = numPlayers;
+  actual->playedCardCount = playedCardCount;
   cards_init(actual, actual->deckCount, actual->deck);
   cards_init(actual, actual->handCount, actual->hand);
   cards_init(actual, actual->discardCount, actual->discard);
+  for (i=0; i<playedCardCount; i++) {
+    actual->playedCards[i] = rand() % (treasure_map + 1);
+  }
   memcpy(expected, actual, sizeof(struct gameState));
 
   return 0;
 }
 
 /**
- * Runs a single test run for adventurer card
+ * Runs a single test run for smithy card
  * @param  actual   - actual state to test
  * @param  expected - expected outcome of state
  * @return          - success value
  */
 int test_run(struct gameState *actual, struct gameState *expected) {
-  int ret;
+  int ret, i;
   int whoseTurn = actual->whoseTurn;
-  int drawntreasure=0;
-  int cardDrawn;
-  int temphand[MAX_HAND];
-  int z = 0; // counter for the temp hand
-
-  ret = effect_adventurer(actual);
+  int handPos = rand() % (actual->handCount[whoseTurn] + 1);
+  int expectedHandCount = actual->handCount[whoseTurn] + 2; // +3, -1 for played
+  // run actual function
+  ret = effect_smithy(handPos, actual);
   test_result(!ret, "the correct return value");
-
-  while(drawntreasure < 2) {
-    if (expected->deckCount[whoseTurn] <1) { //if the deck is empty we need to shuffle discard and add to deck
-      ret = shuffle(whoseTurn, expected);
-      test_result(!ret, "the correct return value from shuffle");
-    }
+  // draw 3 cards
+  for (i=0; i<3; i++) {
     ret = drawCard(whoseTurn, expected);
     test_result(!ret, "the correct return value from drawCard");
-    cardDrawn = expected->hand[whoseTurn][expected->handCount[whoseTurn]-1]; //top card of hand is most recently drawn card.
-    if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
-      drawntreasure++;
-    else{
-      temphand[z]=cardDrawn;
-      expected->handCount[whoseTurn]--; //this should just remove the top card (the most recently drawn one).
-      z++;
-    }
   }
-  while(z-1 >= 0) {
-    expected->discard[whoseTurn][expected->discardCount[whoseTurn]++]=temphand[z-1]; // discard all cards in play that have been drawn
-    z = z-1;
-  }
-  test_result(!memcmp(expected->hand[whoseTurn], actual->hand[whoseTurn], MAX_HAND), "only drawn the 2 treasure cards");
+  // discard played card
+  ret = discardCard(handPos, whoseTurn, expected, 0);
+  test_result(!ret, "the correct return value from discardCard");
+  test_result(actual->handCount[whoseTurn] == expectedHandCount, "added 3 cards to the current player");
   test_result(!memcmp(expected, actual, sizeof(struct gameState)), "effected only values of the game state it needed to");
 
   return 0;
@@ -90,11 +83,11 @@ int main() {
   struct gameState actual, expected;
   int numTests = 1000;
   srand(time(NULL));
-  test_header("effect_adventurer");
+  test_header("effect_smithy");
   for (; numTests; numTests--) {
     test_init(&actual, &expected);
     test_run(&actual, &expected);
   }
-  test_header("effect_adventurer Completed.");
+  test_header("effect_smithy Completed.");
   return 0;
 }
