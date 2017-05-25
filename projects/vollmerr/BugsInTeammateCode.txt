@@ -1,0 +1,17 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////
+//  Ryan Vollmer
+//  CS 362 - Assignment 5 - Bugs Section
+//////////////////////////////////////////////////////////////////////////////////////////////////
+
+Adventurer card not shuffling cards (section not ran, as commented out). Due to this it is not always drawing the correct number of cards and possibly corrupting other parts of state (cannot tell until that issue resolved). Error consistently happens every time function called. Found from test displaying error text with issue, see where issue is in code (commented out).
+
+Council Room card adding 3 instead of 4 cards to the current player and possibly corrupting other parts of state (cannot tell until that issue resolved). Error consistently happens every time function called. Found from test displaying error text with issue, see where issue is in code (for loop has wrong number).
+
+Smithy card does not draw the correct number of cards and possibly corrupting other parts of state (cannot tell until that issue resolved). Error happens most times function called. Found from test displaying error text with issue, see where issue is in code (for loop has wrong number).
+
+Minion card passes all tests.
+UpdateCoins passes all tests.
+DiscardCard passes all tests.
+HandCard passes all tests.
+
+playCard does not reduce the number of actions for the current player and possibly corrupting other parts of state (cannot tell until that issue resolved). Error happens most every time function called. Found from test displaying error text with issue, see where issue is in code (reduction commented out).
