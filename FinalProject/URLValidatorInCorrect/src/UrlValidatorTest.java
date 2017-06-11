@@ -167,13 +167,13 @@ public class UrlValidatorTest {
 
     // https://www.iana.org/assignments/uri-schemes/uri-schemes.xhtml
     String[] invalidSchemes = {
+            "",
             "://",
             "$",
             "http:/",
             "123"
     };
     String[] validSchemes = {
-            "",
             "aaa://",
             "http://",
             "z39.50s://",
