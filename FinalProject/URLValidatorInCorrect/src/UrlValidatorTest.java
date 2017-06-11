@@ -24,7 +24,9 @@ public class UrlValidatorTest {
     private boolean printStatus = false;
     private boolean printIndex = false;//print index that indicates current scheme,host,port,path, query test were using.
 
-    public UrlValidatorTest(String testName) {}
+    public UrlValidatorTest(String testName) {
+        printHeader("isValid");
+    }
 
     /**
      * Tests various specific cases manually
@@ -35,19 +37,31 @@ public class UrlValidatorTest {
         printHeader("isValid manually");
 
         System.out.println(String.format("Testing valid urls..."));
+        testIsValid("http://foo.com", "", "", true);
+        testIsValid("http://foo.com/", "", "", true);
         testIsValid("http://foo.com/bar", "", "", true);
         testIsValid("https://foo.com/bar", "", "", true);
-        testIsValid("file:///foo", "", "", true);
+        testIsValid("http://foo.jp/bar", "", "", true);
         testIsValid("http://foo.ru/bar", "", "", true);
         testIsValid("http://foo.com?q=bar", "", "", true);
+        testIsValid("http://foo.com?q=bar&z=baz", "", "", true);
+        testIsValid("file:///foo", "", "", true);
+        testIsValid("http://foo.com:80", "", "", true);
         testIsValid("http://foo.com:8080", "", "", true);
+        testIsValid("http://123.221.132.231", "", "", true);
+        testIsValid("http://123.221.132.231:80", "", "", true);
         System.out.println(String.format("Done testing valid urls.\n"));
 
-        System.out.println(String.format("Testing valid urls..."));
+        System.out.println(String.format("Testing invalid urls..."));
+        testIsValid("http:///foo", "", "", false);
+        testIsValid("http://foo.com?q=", "", "", false);
+        testIsValid("http://foo.com:808080", "", "", false);
         testIsValid("http://123.456.789.000", "", "", false);
-        testIsValid("http:/foo.com", "", "", false);
-        testIsValid("http://foo.com/../", "", "", false);
-        System.out.println(String.format("Done testing valid urls.\n"));
+        testIsValid("http://111.111.111", "", "", false);
+        testIsValid("http://111.111.111.111.111", "", "", false);
+        testIsValid("http://foo.falsedomainname", "", "", false);
+        testIsValid("77012://foo.com", "", "", false);
+        System.out.println(String.format("Done testing invalid urls.\n"));
     }
 
     /**
@@ -101,7 +115,33 @@ public class UrlValidatorTest {
         }
     }
 
-    public void testAnyOtherUnitTest() {}
+    public void testAnyOtherUnitTest() {
+        printHeader("isValid with specific edge cases");
+
+        // https://en.wikipedia.org/wiki/Domain_Name_System#Domain_name_syntax
+        int maxLabel = 64;
+        int maxHost = 253;
+        String maxLengthLabel = new String(new char[maxLabel - 1]).replace("\0", "a");
+        String maxLengthHost = "";
+        for (int i = 1; i <= maxHost; i++) {// 253 - 4 for .com => 249
+            if (i % maxLabel == 0) { // 0-63 chars max per label
+                maxLengthHost += '.';
+            }
+            else {
+                maxLengthHost += 'o';
+            }
+        }
+
+        System.out.println(String.format("Testing max domain length of %d chars ...", maxHost));
+        testIsValid("http://" + maxLengthHost + ".com", "", "", true);
+        testIsValid("http://" + maxLengthHost + ".a.com", "", "", false);    // 254 chars domain (1 over)
+        System.out.println(String.format("Done testing max domain length of %d chars.\n", maxHost));
+
+        System.out.println(String.format("Testing max domain label length of %d chars ...", maxLabel));
+        testIsValid("http://" + maxLengthLabel + ".com", "", "", true);
+        testIsValid("http://" + maxLengthLabel + "a.com", "", "", false);    // 64 length on end label
+        System.out.println(String.format("Done testing max domain label length of %d chars.\n", maxLabel));
+    }
 
     public void testSection(String[] values, String type, String preText, String postText, boolean expected) {
         String url;
@@ -141,11 +181,15 @@ public class UrlValidatorTest {
     };
 
     String[] invalidHosts = {
-            "0.0.0",
-            "0.0.0.256",
+            "192.192.192",
+            "192.192.192.256",
+            "192.192.192.192.192",
             "@#$%",
             "-1.0.0.0",
             "test.invalid",
+            "test.ab",
+            "test.zx",
+            "invalid",
             ""
     };
     String[] validHosts = {
