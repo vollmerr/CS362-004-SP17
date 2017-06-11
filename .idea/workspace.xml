@@ -2,6 +2,75 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7472269d-6d7b-4035-871a-45638c700d44" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/Makefile" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/badTestDrawCard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/betterTestDrawCard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/dominion.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/dominion.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/dominion_helpers.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/interface.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/interface.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/playdom.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/player.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/randTest_adventurerCard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/randomtestadventurer.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/randomtestcard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/rngs.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/rngs.h" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/rt.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/supplyTest.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/testBuyCard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/testDrawCard.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/testInit.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Assignment4/testShuffle.c" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/bin/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/src/DomainValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/src/InetAddressValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/src/RegexValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/src/ResultPair.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/src/UrlValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/bin/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/DomainValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/InetAddressValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/RegexValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/ResultPair.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlsToVerify.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/bin/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/src/DomainValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/src/InetAddressValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/src/RegexValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/src/ResultPair.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/src/UrlValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/.classpath" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/.project" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/.settings/org.eclipse.jdt.core.prefs" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/bin/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/DomainValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/InetAddressValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/RegexValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/ResultPair.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/UrlValidator.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/projects/aburasa/FinalProject/URLValidatorInCorrect/src/UrlsToVerify.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/URLValidatorInCorrect/UrlValidatorTest.class" afterPath="$PROJECT_DIR$/out/production/URLValidatorInCorrect/UrlValidatorTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java" afterPath="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java" />
     </list>
@@ -20,24 +89,16 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="UrlValidatorTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
-              <folding>
-                <element signature="e#0#4446#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UrlValidatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="352" column="6" lean-forward="false" selection-start-line="352" selection-start-column="6" selection-end-line="352" selection-end-column="6" />
+            <state relative-caret-position="384">
+              <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#12425#12426#0" expanded="true" />
+                <element signature="e#12461#12462#0" expanded="true" />
+                <marker date="1497157166436" expanded="true" signature="12717:12839" ph="{...}" />
+                <marker date="1497157166436" expanded="true" signature="12956:13101" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -74,9 +135,9 @@
         <option value="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTestTestTesta.java" />
         <option value="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/URLValidatorInCorrect1.iml" />
         <option value="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/ResultPairTest.java" />
-        <option value="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java" />
         <option value="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidator.java" />
         <option value="$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java" />
+        <option value="$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java" />
       </list>
     </option>
   </component>
@@ -445,7 +506,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.50031745" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19746032" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -495,6 +556,10 @@
           <caret line="18" column="22" lean-forward="false" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#12425#12426#0" expanded="true" />
+            <element signature="e#12461#12462#0" expanded="true" />
+            <marker date="1497157166436" expanded="true" signature="12717:12839" ph="{...}" />
+            <marker date="1497157166436" expanded="true" signature="12956:13101" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -615,26 +680,31 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="304" column="0" lean-forward="false" selection-start-line="304" selection-start-column="0" selection-end-line="304" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="352" column="6" lean-forward="false" selection-start-line="352" selection-start-column="6" selection-end-line="352" selection-end-column="6" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#16833#16834#0" expanded="false" />
+            <element signature="e#16882#16883#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/FinalProject/URLValidatorInCorrect/src/UrlValidatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="31" column="5" lean-forward="true" selection-start-line="31" selection-start-column="5" selection-end-line="31" selection-end-column="5" />
+        <state relative-caret-position="704">
+          <caret line="81" column="30" lean-forward="false" selection-start-line="81" selection-start-column="30" selection-end-line="81" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/FinalProject/URLValidatorCorrect/test/UrlValidatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="384">
+          <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
           <folding>
-            <element signature="e#0#4446#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#12425#12426#0" expanded="true" />
+            <element signature="e#12461#12462#0" expanded="true" />
+            <marker date="1497157166436" expanded="true" signature="12717:12839" ph="{...}" />
+            <marker date="1497157166436" expanded="true" signature="12956:13101" ph="{...}" />
           </folding>
         </state>
       </provider>
